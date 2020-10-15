@@ -20,11 +20,13 @@ const marker = L.marker([50.5, 30.5]).addTo(mymap);
 const api_url = "https://geo.ipify.org/api/v1?";
 const api_key = "apiKey=at_9vEb5lhWCsiMKFiyPMs7BrG1hbA2E";
 
-//Get form from the dom.
+//Get the form.
 const form = document.querySelector(".form");
-//Listen for a submit event.
+//Set initial value to the user ip.
 initialIp();
+loading();
 
+//Listen for a submit event.
 form.addEventListener("submit", getLocation);
 
 async function getLocation(e) {
@@ -66,8 +68,8 @@ function loading() {
 }
 
 //Set initial value to the user ip.
-function initialIp() {
-  fetch(api_url + api_key + "&domain")
+async function initialIp() {
+  await fetch(api_url + api_key + "&domain")
     .then((res) => res.json())
     .then((data) => {
       setLocation(data);
@@ -86,7 +88,7 @@ function setLocation(results) {
            </div>
            <div class="separator">
             <span>Location</span>
-            <h2>${location.country}<br>${location.region}<br>${location.city}</h2>
+            <h2>${location.country}, ${location.region}, ${location.city}</h2>
            </div>
            <div class="separator">
              <span>Timezone</span>
