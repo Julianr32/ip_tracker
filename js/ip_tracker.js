@@ -3,13 +3,13 @@ const mymap = L.map("mapid", {
   zoomControl: false,
 }).setView([0, 0], 1);
 
-//TileLayer for the map by maptiler.com
+//TileLayer for the map.
 const tileLayer = L.tileLayer(
-  "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=ARNvuJofN1lmosfwG1r8",
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
     minZoom: 2,
     attribution:
-      '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright"target="_blank">&copy; OpenStreetMap contributors</a>',
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }
 ).addTo(mymap);
 
@@ -60,8 +60,6 @@ async function getLocation(e) {
     });
 }
 
-//Functions
-
 //Loading gif ?).
 function loading() {
   document.querySelector(".result").innerHTML = `<div class="load">
@@ -104,7 +102,7 @@ function setLocation(results) {
 
   resultContainer.innerHTML = output;
   //Set location.
-  mymap.flyTo([location.lat, location.lng], 17, { duration: 4 });
+  mymap.flyTo([location.lat, location.lng], 15, { duration: 4 });
   //Update marker.
   marker.setLatLng([location.lat, location.lng]).bindPopup(location.city);
 }
