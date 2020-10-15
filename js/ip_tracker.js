@@ -4,7 +4,7 @@ const mymap = L.map("mapid", {
 }).setView([0, 0], 1);
 
 //TileLayer for the map by maptiler.com
-L.tileLayer(
+const tileLayer = L.tileLayer(
   "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=ARNvuJofN1lmosfwG1r8",
   {
     minZoom: 2,
@@ -16,12 +16,14 @@ L.tileLayer(
 //Initialize marker.
 const marker = L.marker([50.5, 30.5]).addTo(mymap);
 
+//Get elements from the dom.
+const form = document.querySelector(".form");
+const resultContainer = document.querySelector(".result");
+
 //IP Geolocation API by IPify
 const api_url = "https://geo.ipify.org/api/v1?";
 const api_key = "apiKey=at_9vEb5lhWCsiMKFiyPMs7BrG1hbA2E";
 
-//Get the form.
-const form = document.querySelector(".form");
 //Set initial value to the user ip.
 initialIp();
 loading();
@@ -100,9 +102,9 @@ function setLocation(results) {
            </div>
           `;
 
-  document.querySelector(".result").innerHTML = output;
+  resultContainer.innerHTML = output;
   //Set location.
-  mymap.flyTo([location.lat, location.lng], 15, { duration: 4 });
+  mymap.flyTo([location.lat, location.lng], 17, { duration: 4 });
   //Update marker.
-  marker.setLatLng([location.lat, location.lng]).bindPopup(ip);
+  marker.setLatLng([location.lat, location.lng]).bindPopup(location.city);
 }
