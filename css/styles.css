@@ -50,7 +50,7 @@ button {
   transition: opacity 0.2s;
 }
 
-button:active {
+button:hover {
   opacity: 0.5;
 }
 
@@ -109,29 +109,12 @@ button:active {
   justify-items: center;
 }
 
-#mapid {
-  height: 65vh;
-}
-
 .separator:not(:last-of-type) {
   border-right: 2px solid hsl(0, 0%, 91%);
 }
 
-ul {
-  height: 100%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style-type: none;
-}
-
-li {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgb(116, 115, 115);
-  margin-left: 1rem;
+#mapid {
+  height: 65vh;
 }
 
 .error-message {
@@ -142,7 +125,7 @@ li {
   margin: 0 auto;
   display: grid;
   place-items: center;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: red;
 }
 
@@ -151,16 +134,26 @@ li {
   pointer-events: none;
 }
 @media (max-width: 768px) {
+  h1 {
+    margin-top: 7rem;
+    line-height: 1;
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
   .header {
     padding: 0 1.5rem;
     height: 25vh;
   }
 
   .result {
+    width: 94%;
+    top: -5%;
     padding: 1rem 0;
     height: auto;
-    width: 92.25%;
-    top: -5%;
     flex-direction: column;
     text-align: center;
   }
@@ -179,20 +172,6 @@ li {
 
   #mapid {
     height: 100vh;
-  }
-
-  h1 {
-    margin-top: 7rem;
-    line-height: 1;
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 1.6rem;
-  }
-
-  p {
-    font-size: 1.6rem;
   }
 
   .input-search {
